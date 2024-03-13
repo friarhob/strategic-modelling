@@ -24,7 +24,7 @@ After that, add a instance creating in `list_players` on `simulation.py`.
 
 I just implemented the bots that exist in [Universal Paperclips game](https://www.decisionproblem.com/paperclips/index2.html). It would be nice to have some standardised strategies as bots by default. Feel free to pull request anything regarding that. I don't plan to put in the codebase customised bots, though.
 
-Also, this was a 4-hour project, feel free to propose any refactors or improvements towards that.
+Also, this was a 2-hour project, tops, feel free to propose any refactors or improvements via pull request.
 
 ## License
 
