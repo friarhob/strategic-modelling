@@ -9,8 +9,11 @@ from players.random import RandomPlayer
 from players.player import Player
 from players.titfortat import TitForTatPlayer
 
-N_GAMES = 100
+N_GAMES = 1000
 N_MOVES_PER_GAME = 100
+
+PRINT_GAMES = False
+PRINT_BOARD = False
 
 def simulate_game(board: Board, player1: Player, player2: Player, rounds: int) -> dict:
     results = {
@@ -40,7 +43,8 @@ if __name__ == "__main__":
     for _ in range(N_GAMES):
         board = Board()
 
-        print(board)
+        if PRINT_BOARD:
+            print(board)
 
         list_players = [
             A100Player("A100", board),
@@ -58,14 +62,16 @@ if __name__ == "__main__":
                 if(player1 != player2):
                     results = simulate_game(board, player1, player2, N_MOVES_PER_GAME)
 
-                    print(f"{player1.id} ({results[player1.id]}) vs ({results[player2.id]}) {player2.id}")
+                    if PRINT_GAMES:
+                        print(f"{player1.id} ({results[player1.id]}) vs ({results[player2.id]}) {player2.id}")
 
                     for player in results:
                         if player not in final_results:
                             final_results[player] = 0
                         final_results[player] += results[player]
         
-        print("")
+        if PRINT_GAMES or PRINT_BOARD:
+            print("")
 
     final_output = sorted([(result, player) for player, result in final_results.items()], reverse=True)
     for (result, player) in final_output:
