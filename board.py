@@ -2,14 +2,19 @@ from random import randint
 
 class Board:
     def __init__(self):
+        a = randint(1,10)
+        b = randint(1,10)
+        c = randint(1,10)
+        d = randint(1,10)
+
         self.board = [
             [
-                (randint(1,10), randint(1,10)),
-                (randint(1,10), randint(1,10))
+                (a, a),
+                (b, c)
             ],
             [
-                (randint(1,10), randint(1,10)),
-                (randint(1,10), randint(1,10))
+                (c, b),
+                (d, d)
             ],
         ]
 
