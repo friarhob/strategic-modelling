@@ -37,6 +37,17 @@ def simulate_game(board: Board, player1: Player, player2: Player, rounds: int) -
     
     return results
 
+PLAYER_CONFIGS = [
+    ("A100", A100Player),
+    ("B100", B100Player),
+    ("Random", RandomPlayer),
+    ("Greedy", GreedyPlayer),
+    ("Generous", GenerousPlayer),
+    ("MiniMax", MinimaxPlayer),
+    ("TitForTat", TitForTatPlayer),
+    ("BeatLast", BeatLastPlayer),
+]
+
 if __name__ == "__main__":
     final_results = {}
 
@@ -46,30 +57,21 @@ if __name__ == "__main__":
         if PRINT_BOARD:
             print(board)
 
-        list_players = [
-            A100Player("A100", board),
-            B100Player("B100", board),
-            RandomPlayer("Random", board),
-            GreedyPlayer("Greedy", board),
-            GenerousPlayer("Generous", board),
-            MinimaxPlayer("MiniMax", board),
-            TitForTatPlayer("TitForTat", board),
-            BeatLastPlayer("BeatLast", board),
-        ]
-
-        for player1 in list_players:
-            for player2 in list_players:
-                if(player1 != player2):
+        for index1, (player_id1, player_class1) in enumerate(PLAYER_CONFIGS):
+            for index2, (player_id2, player_class2) in enumerate(PLAYER_CONFIGS):
+                if index1 != index2:
+                    player1 = player_class1(player_id1, board)
+                    player2 = player_class2(player_id2, board)
                     results = simulate_game(board, player1, player2, N_MOVES_PER_GAME)
 
                     if PRINT_GAMES:
-                        print(f"{player1.id} ({results[player1.id]}) vs ({results[player2.id]}) {player2.id}")
+                        print(f"{player_id1} ({results[player_id1]}) vs ({results[player_id2]}) {player_id2}")
 
                     for player in results:
                         if player not in final_results:
                             final_results[player] = 0
                         final_results[player] += results[player]
-        
+
         if PRINT_GAMES or PRINT_BOARD:
             print("")
 
