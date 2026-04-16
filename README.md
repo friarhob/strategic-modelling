@@ -36,6 +36,7 @@ After that, add a `(name, PlayerClass)` entry to `PLAYER_CONFIGS` in `simulation
 ### Custom
 
 - **Bayesian** — Tracks opponent move frequencies conditioned on its own previous move, then picks the move with the highest expected payoff. Falls back to a greedy strategy until enough history is available.
+- **Pavlov** — Win-Stay, Lose-Shift. Repeats its last move if the payoff was above the board's average, otherwise switches. Plays randomly on the first round.
 
 ## License
 
