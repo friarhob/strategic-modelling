@@ -22,6 +22,8 @@ After that, add a `(name, PlayerClass)` entry to `PLAYER_CONFIGS` in `simulation
 
 ## Players
 
+Originally, players were implemented based on the [Universal Paperclips](https://www.decisionproblem.com/paperclips/index2.html) game. A few other players were implemented after.
+
 ### From [Universal Paperclips](https://www.decisionproblem.com/paperclips/index2.html)
 
 - **A100** — Always plays 0.
@@ -33,10 +35,11 @@ After that, add a `(name, PlayerClass)` entry to `PLAYER_CONFIGS` in `simulation
 - **TitForTat** — Copies the opponent's last move. Plays randomly on the first round.
 - **BeatLast** — Picks the best response assuming the opponent will repeat their last move. Plays randomly on the first round.
 
-### Custom
+### Other
 
 - **Bayesian** — Tracks opponent move frequencies conditioned on its own previous move, then picks the move with the highest expected payoff. Falls back to a greedy strategy until enough history is available.
 - **Pavlov** — Win-Stay, Lose-Shift. Repeats its last move if the payoff was above the board's average, otherwise switches. Plays randomly on the first round.
+- **OpponentMarkov** — Tracks opponent move transitions (P(next | previous)) to detect autocorrelation in the opponent's behavior, then picks the move with the highest expected payoff. Falls back to a greedy strategy until enough history is available.
 
 ## License
 

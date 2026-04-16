@@ -7,11 +7,12 @@ from players.greedy import GreedyPlayer
 from players.minimax import MinimaxPlayer
 from players.random import RandomPlayer
 from players.bayesian import BayesianPlayer
+from players.opponentmarkov import OpponentMarkovPlayer
 from players.pavlov import PavlovPlayer
 from players.player import Player
 from players.titfortat import TitForTatPlayer
 
-N_GAMES = 1000
+N_GAMES = 100
 N_MOVES_PER_GAME = 100
 
 PRINT_GAMES = False
@@ -50,6 +51,7 @@ PLAYER_CONFIGS = [
     ("BeatLast", BeatLastPlayer),
     ("Bayesian", BayesianPlayer),
     ("Pavlov", PavlovPlayer),
+    ("OpponentMarkov", OpponentMarkovPlayer),
 ]
 
 if __name__ == "__main__":
