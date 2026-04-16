@@ -6,6 +6,7 @@ from players.generous import GenerousPlayer
 from players.greedy import GreedyPlayer
 from players.minimax import MinimaxPlayer
 from players.random import RandomPlayer
+from players.bayesian import BayesianPlayer
 from players.player import Player
 from players.titfortat import TitForTatPlayer
 
@@ -46,6 +47,7 @@ PLAYER_CONFIGS = [
     ("MiniMax", MinimaxPlayer),
     ("TitForTat", TitForTatPlayer),
     ("BeatLast", BeatLastPlayer),
+    ("Bayesian", BayesianPlayer),
 ]
 
 if __name__ == "__main__":

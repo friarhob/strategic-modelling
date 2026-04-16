@@ -18,13 +18,24 @@ This is intented to run locally, straight away from terminal. Just fork it to in
 
 Add any new players on `players/` folder, inheriting from `player.Player` and implementing the `run` method. Feel free to store list of moves or any other attributes that help your strategy, as well as implementing any support methods.
 
-After that, add a instance creating in `list_players` on `simulation.py`.
+After that, add a `(name, PlayerClass)` entry to `PLAYER_CONFIGS` in `simulation.py`. The simulation creates fresh player instances per matchup, so any state stored in your player resets between opponents.
 
-## Contributing
+## Players
 
-I just implemented the bots that exist in [Universal Paperclips game](https://www.decisionproblem.com/paperclips/index2.html). It would be nice to have some standardised strategies as bots by default. Feel free to pull request anything regarding that. I don't plan to put in the codebase customised bots, though.
+### From [Universal Paperclips](https://www.decisionproblem.com/paperclips/index2.html)
 
-Also, this was a 2-hour project, tops, feel free to propose any refactors or improvements via pull request.
+- **A100** — Always plays 0.
+- **B100** — Always plays 1.
+- **Random** — Picks 0 or 1 at random each round.
+- **Greedy** — Always picks the move containing the highest possible payoff for itself.
+- **Generous** — Always picks the move containing the highest possible payoff for the opponent.
+- **MiniMax** — Always picks the move containing the lowest possible payoff for the opponent.
+- **TitForTat** — Copies the opponent's last move. Plays randomly on the first round.
+- **BeatLast** — Picks the best response assuming the opponent will repeat their last move. Plays randomly on the first round.
+
+### Custom
+
+- **Bayesian** — Tracks opponent move frequencies conditioned on its own previous move, then picks the move with the highest expected payoff. Falls back to a greedy strategy until enough history is available.
 
 ## License
 
